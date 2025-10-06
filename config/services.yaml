@@ -33,5 +33,10 @@ services:
         arguments:
             $bucket: '%env(S3_BUCKET)%'
 
+    StaticService\Interface\Cache\Connection:
+        class: 'StaticService\Cache\RedisConnection'
+        arguments:
+            $connectionString: '%env(REDIS_CONNECTION)%'
+
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
