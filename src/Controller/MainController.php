@@ -3,7 +3,7 @@
 namespace StaticService\Controller;
 
 use Aws\S3\Exception\S3Exception;
-use StaticService\Interface\S3\S3ServiceInterface;
+use StaticService\Interface\S3\CachedS3ServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Attribute\Route;
 final class MainController extends AbstractController
 {
     public function __construct(
-        private readonly S3ServiceInterface $s3Service,
+        private readonly CachedS3ServiceInterface $s3Service,
     ) {
     }
 
