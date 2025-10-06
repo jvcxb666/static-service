@@ -1,0 +1,39 @@
+version: "3.7"
+
+services:
+    static-apache:
+      container_name: static-apache
+      image: php:8.4-apache
+      volumes:
+        - ./:/var/www/html
+        - ./apache/core.conf:/etc/apache2/apache2.conf
+        - ./apache/default.conf:/etc/apache2/sites-available/000-default.conf
+      ports:
+        - 8083:80
+      build:
+        context: .
+        dockerfile: ./Dockerfile
+
+    static-cache:
+        image: redis:latest
+        container_name: static-cache
+        restart: always
+        ports:
+          - "6378:6379"
+        volumes:
+          - /tmp/cache:/root/redis
+        environment:
+          - REDIS_PASSWORD=pass
+          - REDIS_PORT=6379
+          - REDIS_DATABASES=16
+
+    minio:
+      container_name: minio
+      image: minio/minio
+      ports:
+        - "9000:9000"
+        - "9001:9001"
+      environment:
+        MINIO_ROOT_USER: root
+        MINIO_ROOT_PASSWORD: password123
+      command: server --console-address ":9001" /data
