@@ -22,7 +22,7 @@ class S3Service implements S3ServiceInterface
             'Key' => $key,
         ]);
 
-        return $object->get('Body') ?? '';
+        return $object?->get('Body') ?? '';
     }
 
     public function add(string $path): string

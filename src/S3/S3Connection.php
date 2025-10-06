@@ -3,6 +3,7 @@
 namespace StaticService\S3;
 
 use Aws\S3\S3Client;
+use Aws\S3\S3ClientInterface;
 use StaticService\Interface\S3\Connection;
 
 class S3Connection implements Connection
@@ -18,7 +19,7 @@ class S3Connection implements Connection
         $this->connect($region, $user, $password, $url);
     }
 
-    public function getClient(): S3Client
+    public function getClient(): S3ClientInterface
     {
         return $this->client;
     }
