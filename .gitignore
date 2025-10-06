@@ -17,3 +17,8 @@
 
 composer.lock
 symfony.lock
+
+###> phpunit/phpunit ###
+/phpunit.xml
+/.phpunit.cache/
+###< phpunit/phpunit ###
