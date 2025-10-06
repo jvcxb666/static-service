@@ -1,6 +1,6 @@
 <?php
 
-namespace Cache;
+namespace StaticService\Tests\Cache;
 
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
