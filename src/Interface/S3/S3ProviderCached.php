@@ -2,7 +2,7 @@
 
 namespace StaticService\Interface\S3;
 
-interface CachedS3ServiceInterface extends S3ServiceInterface
+interface S3ProviderCached extends S3Provider
 {
     public const KEY_PREFIX = 'static:file:';
 }

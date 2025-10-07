@@ -28,8 +28,13 @@ services:
             $password: '%env(S3_PASSWORD)%'
             $url: '%env(S3_URL)%'
 
-    StaticService\Interface\S3\S3ServiceInterface:
-        class: 'StaticService\S3\S3Service'
+    StaticService\Interface\S3\S3Provider:
+        class: 'StaticService\S3\S3FileProvider'
+        arguments:
+            $bucket: '%env(S3_BUCKET)%'
+    
+    StaticService\Interface\S3\S3Storage:
+        class: 'StaticService\S3\S3FileStorage'
         arguments:
             $bucket: '%env(S3_BUCKET)%'
 
