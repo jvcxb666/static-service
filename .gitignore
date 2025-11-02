@@ -22,3 +22,6 @@ symfony.lock
 /phpunit.xml
 /.phpunit.cache/
 ###< phpunit/phpunit ###
+
+### doc
+swagger.json
