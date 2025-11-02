@@ -3,6 +3,7 @@
 namespace StaticService\Controller;
 
 use Aws\S3\Exception\S3Exception;
+use OpenApi\Attributes as OA;
 use StaticService\Interface\S3\S3ProviderCached;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,6 +17,23 @@ final class DownloadAction extends AbstractController
     ) {
     }
 
+    #[OA\Get(
+        path: '/static/{id}/download',
+        description: 'Download file',
+        parameters: [
+            new OA\Parameter(
+                name: 'id',
+                in: 'path',
+                description: 'storage file id',
+                required: true,
+                schema: new OA\Schema(),
+            ),
+        ],
+        tags: ['static service']
+    )]
+    #[OA\Response(response: '200', description: 'Downloads file')]
+    #[OA\Response(response: '404', description: 'Returns when file is not found')]
+    #[OA\Response(response: '400', description: 'Returns error message')]
     #[Route('/static/{id}/download', methods: [Request::METHOD_GET])]
     public function __invoke(string $id): Response
     {
